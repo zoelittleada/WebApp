@@ -3,6 +3,7 @@ from flask import Flask
 from config import Config
 from extensions import db, login_manager
 import os
+from datetime import datetime
 
 # Initialise Flask application
 app = Flask(__name__)
@@ -30,6 +31,10 @@ with app.app_context():
     # Create all database tables defined in models.py
     # This will only create tables if they don't already exist.
     db.create_all()
+
+@app.context_processor
+def inject_now():
+    return {'now': datetime.utcnow()}
 
 if __name__ == '__main__':
     # Run the Flask application

@@ -13,14 +13,9 @@ def home():
     """
     # Query all jobs from the database, ordered by date posted (newest first)
     jobs = Job.query.order_by(Job.date_posted.desc()).all()
+    # Add a formatted_date attribute to each job
     for job in jobs:
-        if job.date_posted:
-            job.formatted_date = job.date_posted.strftime('%Y-%m-%d')
-        else:
-            job.formatted_date = 'Unknown date'
-            print(f"Warning: Job {job.id} has no date_posted!")
-        if not hasattr(job, 'author') or job.author is None:
-            print(f"Warning: Job {job.id} has no author!")
+        job.formatted_date = job.date_posted.strftime('%Y-%m-%d')
     return render_template('index.html', jobs=jobs)
 
 @app.route("/register", methods=['GET', 'POST'])

@@ -50,9 +50,14 @@
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
+    <!-- Debug info for authentication -->
+    <div class="container mx-auto mt-2 text-xs text-gray-500">
+        <p>Authenticated: {{ current_user.is_authenticated }}</p>
+        <p>User ID: {{ current_user.get_id() }}</p>
+    </div>
     <header class="bg-blue-800 text-white p-4 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="{{ url_for('home') }}" class="text-2xl font-bold rounded-lg p-2 hover:bg-blue-700 transition duration-200">BritEdge</a>
+            <a href="{{ url_for('home') }}" class="text-2xl font-bold rounded-lg p-2 hover:bg-blue-700 transition duration-200">BritEdge Job Scheduling System</a>
             <nav>
                 <ul class="flex space-x-4">
                     {% if current_user.is_authenticated %}
@@ -86,11 +91,8 @@
 
     <footer class="bg-gray-800 text-white p-4 mt-8">
         <div class="container mx-auto text-center">
-            <p>&copy; {{ moment().format('YYYY') }} BritEdge. All rights reserved.</p>
+            <p>&copy; {{ now.year }} BritEdge. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- Moment.js for date formatting (optional, but good for dynamic dates) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 </body>
 </html>

@@ -2,8 +2,11 @@
 from flask import Flask
 from config import Config
 from extensions import db, login_manager
-import os
-from datetime import datetime
+from datetime import datetime, timezone
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Initialise Flask application
 app = Flask(__name__)
@@ -34,7 +37,7 @@ with app.app_context():
 
 @app.context_processor
 def inject_now():
-    return {'now': datetime.utcnow()}
+    return {'now': datetime.now(timezone.utc)}
 
 if __name__ == '__main__':
     # Run the Flask application

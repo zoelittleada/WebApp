@@ -2,7 +2,13 @@
 
 ## Tech Stack & Setup
 
-This repository contains a sample Flask web application, "BritEdge Job Management," designed for students to explore flexible cloud deployment strategies. The application allows users to log in, create, track, and manage job entries (e.g., deliveries, engineering tasks). It's built to demonstrate database flexibility and containerisation for various cloud configurations.
+This repository contains a sample Flask web application, "BritEdge Job Management," designed for students to explore flexible cloud deployment strategies. The application allows users to log in, create, track, and manage job entries (e.g., deliveries, engineering tasks). It's built to demonstrate database flexibility and possible containerisation for various cloud configurations.
+
+## How to use this in the cloud?
+
+* Run on a virtual machine with the inbuilt SQLite database
+* Run on a virtual machine with a separate database instance (e.g. PostRes SQL or Cosmos DB NoSQL)
+* 
 
 ### Key Technologies
 
@@ -116,17 +122,17 @@ If you prefer to run the application directly on your machine without Docker:
     ```bash
     python app.py
     ```
-    The application will be accessible at `http://127.0.0.1:5000` by default.
+    The application will be accessible at `http://127.0.0.1:8080` by default.
 
-    **To run on a different port (e.g., 8080) locally:**
+    **To run on a different port (e.g., 5000) locally:**
     You can modify the `if __name__ == '__main__':` block in `app.py` to specify the port:
     ```python
     if __name__ == '__main__':
-        app.run(debug=True, port=8080) # Change 5000 to 8080
+        app.run(debug=True, port=5000) # Change 5000 to 8080
     ```
     Or, you can run it using the `flask run` command with the `--port` flag:
     ```bash
-    flask run --port 8080
+    flask run --port 5000
     ```
 
 ## License
